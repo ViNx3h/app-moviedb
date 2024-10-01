@@ -3,12 +3,19 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import '../App.css';
 
+
+interface MovieDBState {
+    movieDBData: {
+        bannerData: Array<{ backdrop_path: string; title?: string; name?: string; overview: string; vote_average: number; popularity: number }>;
+        imageURL: string;
+    };
+}
 const BannerHome = () => {
 
 
 
-    const BannerData = useSelector(state => state.movieDBData.bannerData);
-    const imageURL = useSelector(state => state.movieDBData.imageURL);
+    const BannerData = useSelector((state: MovieDBState) => state.movieDBData.bannerData);
+    const imageURL = useSelector((state: MovieDBState) => state.movieDBData.imageURL);
     const [currentImage, setCurrentImage] = useState(0);
 
 
