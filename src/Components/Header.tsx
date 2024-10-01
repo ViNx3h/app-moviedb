@@ -23,7 +23,7 @@ const Header = () => {
     }
 
     return (
-        <header className='fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75'>
+        <header className='fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75 z-20'>
             <div className='container mx-auto px-2 flex text-red-500 h-full items-center '>
                 <div className='text-lg font-bold'>
                     <Link to='/'>

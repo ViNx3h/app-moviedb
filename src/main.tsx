@@ -1,6 +1,8 @@
 import { Amplify } from "aws-amplify";
+import axios from 'axios';
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import outputs from "../amplify_outputs.json";
 import App from "./App.tsx";
@@ -12,27 +14,34 @@ import Detail from "./Pages/Detail.tsx";
 import Explore from "./Pages/Explore.tsx";
 import Home from "./Pages/Home.tsx";
 import SearchPage from "./Pages/SearchPage.tsx";
+import { store } from "./store/store.tsx";
+
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
+axios.defaults.headers.common['Authorization'] = `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`
 
 Amplify.configure(outputs);
 
+
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <Provider store={store}>
+      <div className=" pb-14 lg:pb-0">
+        <BrowserRouter>
+          <Header />
+          <Routes>
 
-    <div className="pt-16 pb-14 lg:pb-0">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-
-          <Route path="/" element={<App />}></Route>
-          <Route path="/Home" element={<Home />}></Route>
-          <Route path="/Detail" element={<Explore />}></Route>
-          <Route path="/Detail/:id" element={<Detail />}></Route>
-          <Route path="/Search" element={<SearchPage />}></Route>
-        </Routes>
-        <Footer />
-        <MobileNavigation />
-      </BrowserRouter>
-    </div>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/Home" element={<Home />}></Route>
+            <Route path="/Detail" element={<Explore />}></Route>
+            <Route path="/Detail/:id" element={<Detail />}></Route>
+            <Route path="/Search" element={<SearchPage />}></Route>
+          </Routes>
+          <Footer />
+          <MobileNavigation />
+        </BrowserRouter>
+      </div>
+    </Provider>
 
   </React.StrictMode>
 );

@@ -1,7 +1,11 @@
+import BannerHome from "../Components/BannerHome"
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <div>
+            <BannerHome />
+
+        </div>
     )
 }
 
