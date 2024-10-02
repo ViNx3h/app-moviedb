@@ -1,7 +1,9 @@
+import '@aws-amplify/ui-react/styles.css';
 import { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
+
 
 const Header = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -51,6 +53,7 @@ const Header = () => {
                         </button>
 
                     </form>
+
 
                 </div>
             </div>
