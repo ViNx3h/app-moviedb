@@ -8,9 +8,6 @@ import BannerHome from "./Components/BannerHome";
 import Card from "./Components/Card";
 import { setBannerData, setImageURL } from "./store/MovieSlice";
 
-import { Authenticator } from '@aws-amplify/ui-react'
-import '@aws-amplify/ui-react/styles.css'
-
 
 interface MovieDBState {
   movieDBData: {
@@ -20,7 +17,6 @@ interface MovieDBState {
 }
 
 function App() {
-  
   const trendingData = useSelector((state: MovieDBState) => state.movieDBData.bannerData);
 
   const dispatch = useDispatch();
@@ -62,12 +58,12 @@ function App() {
       <BannerHome />
       <div className="container mx-auto px-3 my-10">
         <h2 className="text-xl lg:text-2xl font-bold mb-2">Trending Show</h2>
-        <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-9">
+        <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-8">
           {
-            trendingData.map((data: any, index, trending) => {
+            trendingData.map((data: any, index,) => {
               console.log(data)
               return (
-                <Card key={data?.id} data={data} index={index + 1} trending={trending} />
+                <Card key={data?.id} data={data} index={index + 1} />
               )
             })
           }

@@ -8,8 +8,8 @@ interface MovieDBState {
 }
 
 
-const Card = (data: any, trending: boolean, index: any) => {
-
+const Card = (data: any, index: any) => {
+    const trending = false;
     // const dispatch = useDispatch();
 
     // const fetchTrendingData = async () => {
