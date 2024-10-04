@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BannerHome from "./Components/BannerHome";
-import Card from "./Components/Card";
+import HorizontalScroll from "./Components/HorizontalScroll";
 import { setBannerData, setImageURL } from "./store/MovieSlice";
 
 
@@ -50,25 +50,13 @@ function App() {
     fetchConfiguration();
   }, [])
 
-
+  console.log(trendingData)
 
   return (
 
     <div>
       <BannerHome />
-      <div className="container mx-auto px-3 my-10">
-        <h2 className="text-xl lg:text-2xl font-bold mb-2">Trending Show</h2>
-        <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-8">
-          {
-            trendingData.map((data: any, index,) => {
-              console.log(data)
-              return (
-                <Card key={data?.id} data={data} index={index + 1} />
-              )
-            })
-          }
-        </div>
-      </div>
+      <HorizontalScroll data={trendingData} heading="Trending" />
     </div>
   );
 }
