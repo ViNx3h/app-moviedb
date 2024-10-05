@@ -62,7 +62,7 @@ const Card = (data: any, index: any) => {
                 <h2 className="text-ellipsis line-clamp-1 font-semibold">{data?.data.title || data?.data.name}</h2>
                 <div className="text-sm text-neutral-400 flex justify-between">
                     {data?.data.release_date || data?.data.first_air_date}
-                    <p className="bg-neutral-600 px-1 rounded-full">Rating: {Number(data?.data.vote_average).toFixed(1)}</p>
+                    <p className="bg-neutral-700 px-1 rounded-full text-white">Rating: {Number(data?.data.vote_average).toFixed(1)}</p>
                 </div>
             </div>
         </div>

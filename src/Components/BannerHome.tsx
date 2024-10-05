@@ -22,22 +22,27 @@ const BannerHome = () => {
 
     const handleNext = () => {
         if (currentImage < BannerData.length - 1) {
-            setCurrentImage(preve => preve + 1)
+            setCurrentImage(preve => preve + 1);
+        } else if (currentImage == BannerData.length - 1) {
+            setCurrentImage(0);
         }
     }
 
     const handlePrevious = () => {
         if (currentImage > 0) {
             setCurrentImage(preve => preve - 1)
+        } else {
+            setCurrentImage(BannerData.length - 1)
         }
     }
 
     useEffect(() => {
         const interval = setInterval(() => {
+            if (currentImage == BannerData.length - 1) {
+                setCurrentImage(0);
+            }
             if (currentImage < BannerData.length - 1) {
                 handleNext();
-            } else {
-                setCurrentImage(0)
             }
         }, 5000)
         return () => clearInterval(interval)
