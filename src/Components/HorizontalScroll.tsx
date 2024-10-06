@@ -4,24 +4,35 @@ import Card from './Card';
 
 
 
-const HorizontalScroll = ({ data, heading }: { data: any; heading: string }) => {
-    console.log(data);  // Make sure to log the correct data
+const HorizontalScroll = ({ data, heading, trending, media_type }: { data: any; heading: string; trending: boolean; media_type: string }) => {
+
     const containerRef = useRef();
+    const handleNext = async () => {
+        containerRef.current.scrollLeft += 300
+    }
+    const handlePrev = async () => {
+        containerRef.current.scrollLeft -= 300
+    }
+
     return (
         <div className="container mx-auto px-3 my-10">
             <h2 className="text-xl lg:text-2xl font-bold mb-2 text-white">{heading}</h2>
-            <div className="overflow-hidden relative">
-                <div className="grid grid-cols-[repeat(auto-fit,228px)] grid-flow-col overflow-x-scroll gap-8">
-                    {data.map((item: any, index: number) => (
-                        <Card key={item.id + "heading" + index} data={item} index={index + 1} trending={true} />
-                    ))}
+            <div className="relative" >
+                <div ref={containerRef} className="grid grid-cols-[repeat(auto-fit,228px)] grid-flow-col overflow-hidden  overflow-x-hidden relative gap-8 z-10 scroll-smooth transition-all">
+                    {
+                        data.map((item: any, index: number) => {
+                            return (
+                                <Card key={item.id + "heading" + index} data={item} index={index + 1} trending={trending} media_type={media_type}/>
+                            )
+                        })
+                    }
 
                 </div>
-                <div className='absolute top-0 flex justify-between w-full h-full items-center px-auto'>
-                    <button className='bg-white p-1 text-black rounded-full ml-1'>
+                <div className='hidden absolute top-0 lg:flex justify-between w-full h-full items-center'>
+                    <button onClick={handlePrev} className='bg-white p-1 text-black rounded-full ml-1 z-10'>
                         <FaAngleLeft />
                     </button>
-                    <button className='bg-white p-1 text-black rounded-full mr-1'>
+                    <button onClick={handleNext} className='bg-white p-1 text-black rounded-full mr-1 z-10'>
                         <FaAngleRight />
                     </button>
                 </div>

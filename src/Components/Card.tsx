@@ -1,4 +1,8 @@
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { setImageURL } from "../store/MovieSlice";
 
 interface MovieDBState {
     movieDBData: {
@@ -8,9 +12,9 @@ interface MovieDBState {
 }
 
 
-const Card = (data: any, index: any) => {
+const Card = ({ data, index, media_type }: any) => {
     const trending = false;
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     // const fetchTrendingData = async () => {
     //     try {
@@ -24,28 +28,30 @@ const Card = (data: any, index: any) => {
     //     }
     // }
 
-    // const fetchConfiguration = async () => {
-    //     try {
-    //         const response = await axios.get('/configuration')
+    const fetchConfiguration = async () => {
+        try {
+            const response = await axios.get('/configuration')
 
-    //         dispatch(setImageURL(response.data.images.secure_base_url + "original"))
+            dispatch(setImageURL(response.data.images.secure_base_url + "original"))
 
-    //         // console.log("response", response.data.images.secure_base_url + "original")
-    //     } catch (error) {
-    //         console.log("error", error);
-    //     }
-    // }
-    // useEffect(() => {
-    //     fetchTrendingData();
-    //     fetchConfiguration();
-    // }, [])
+            // console.log("response", response.data.images.secure_base_url + "original")
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+    useEffect(() => {
+
+        fetchConfiguration();
+    }, [])
 
     const imageURL = useSelector((state: MovieDBState) => state.movieDBData.imageURL)
-    // console.log(data)
+
+    const mediaType = data.media_type ?? media_type
+    // console.log("data", data)
     return (
-        <div className="w-full min-w-[220px] max-w-[220px] h-80 overflow-hidden rounded relative">
+        <Link to={'/' + mediaType + '/' + data.id} className="w-full min-w-[220px] max-w-[220px] h-80 overflow-hidden rounded relative hover:scale-105 transition-all">
             <img
-                src={imageURL + data.data.poster_path}
+                src={(imageURL + data?.poster_path) || (imageURL + data?.backdrop_path)}
 
             />
             <div className="absolute top-4">
@@ -59,13 +65,13 @@ const Card = (data: any, index: any) => {
             </div>
 
             <div className="absolute bottom-0 h-14 backdrop-blur-3xl w-full bg-neutral-600/40 p-2">
-                <h2 className="text-ellipsis line-clamp-1 font-semibold">{data?.data.title || data?.data.name}</h2>
+                <h2 className="text-ellipsis line-clamp-1 font-semibold">{data?.title || data?.name}</h2>
                 <div className="text-sm text-neutral-400 flex justify-between">
-                    {data?.data.release_date || data?.data.first_air_date}
-                    <p className="bg-neutral-700 px-1 rounded-full text-white">Rating: {Number(data?.data.vote_average).toFixed(1)}</p>
+                    {data?.release_date || data?.first_air_date}
+                    <p className="bg-neutral-700 px-1 rounded-full text-white">Rating: {Number(data?.vote_average).toFixed(1)}</p>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

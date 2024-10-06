@@ -20,7 +20,7 @@ const BannerHome = () => {
 
 
 
-    const handleNext = () => {
+    const handleNext = async () => {
         if (currentImage < BannerData.length - 1) {
             setCurrentImage(preve => preve + 1);
         } else if (currentImage == BannerData.length - 1) {
@@ -28,7 +28,7 @@ const BannerHome = () => {
         }
     }
 
-    const handlePrevious = () => {
+    const handlePrevious = async () => {
         if (currentImage > 0) {
             setCurrentImage(preve => preve - 1)
         } else {
@@ -37,7 +37,7 @@ const BannerHome = () => {
     }
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        const interval = setInterval(async () => {
             if (currentImage == BannerData.length - 1) {
                 setCurrentImage(0);
             }

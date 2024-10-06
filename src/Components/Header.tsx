@@ -1,13 +1,18 @@
 import '@aws-amplify/ui-react/styles.css';
 import { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../App.css';
 
 
 const Header = () => {
-    const [searchInput, setSearchInput] = useState('');
+    const location = useLocation();
+    const removeSpace = location?.search?.slice(3).split("%20").join(" ")
+    // console.log("space", removeSpace)
+    const [searchInput, setSearchInput] = useState(removeSpace);
     const nav = useNavigate();
+
+
     // const Navigation = {
     //     {
     //         <label htmlFor="TV shows"></label> 
@@ -22,6 +27,7 @@ const Header = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+
     }
 
     return (

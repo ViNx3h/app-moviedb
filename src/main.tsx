@@ -39,8 +39,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
                 <Route path="/" element={<App />}></Route>
                 <Route path="/home" element={<Home />}></Route>
-                <Route path="/detail" element={<Explore />}></Route>
-                <Route path="/detail/:id" element={<Detail />}></Route>
+                <Route path=":detail" element={<Explore />}></Route>
+                <Route path=":detail/:id" element={<Detail />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>
               </Routes>
               <button onClick={signOut} className="bg-neutral-300 text-black font-bold flex rounded justify-items-end">Sign out</button>
