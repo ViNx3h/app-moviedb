@@ -47,13 +47,24 @@ const Card = ({ data, index, media_type }: any) => {
     const imageURL = useSelector((state: MovieDBState) => state.movieDBData.imageURL)
 
     const mediaType = data.media_type ?? media_type
-    // console.log("data", data)
+    console.log("data", data)
     return (
         <Link to={'/' + mediaType + '/' + data.id} className="w-full min-w-[220px] max-w-[220px] h-80 overflow-hidden rounded relative hover:scale-105 transition-all">
-            <img
-                src={(imageURL + data?.poster_path) || (imageURL + data?.backdrop_path)}
 
-            />
+            {
+                (data?.poster_path || data?.backdrop_path) ? (
+                    < img
+                        src={(imageURL + data?.poster_path) || (imageURL + data?.backdrop_path)}
+
+                    />
+                ) : (
+                    <div className=" bg-neutral-700 min-h-[270px] text-xl flex text-white text-center justify-center items-center">
+                        No image found
+                    </div>
+                )
+
+
+            }
             <div className="absolute top-4">
                 {
                     trending && (

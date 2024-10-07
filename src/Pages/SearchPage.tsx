@@ -5,12 +5,13 @@ import Card from "../Components/Card";
 
 const SearchPage = () => {
     const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
     const location = useLocation();
 
     const fetchData = async () => {
         const query = location?.search?.slice(3) || '';
         try {
-            const response = await axios.get(`/search/collection`, {
+            const response = await axios.get(`search/multi`, {
                 params: {
                     query,
                     page: 1
@@ -23,11 +24,28 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
+        setPage(1);
+        setData([]);
         fetchData();
     }, [location.search]);
 
+    const handleScroll = () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            setPage(preve => preve + 1)
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+
+    }, [page])
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+    }, [])
+
     return (
-        <div className="pt-16">
+        <div className="py-16">
             <div className="container mx-auto">
                 <h2 className="capitalize text-lg lg:text-xl font-semibold my-3 text-center p-5">Search results</h2>
                 <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-4 justify-center">
