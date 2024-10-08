@@ -48,7 +48,7 @@ const Detail = () => {
                 </div>
                 <div className="border-solid border min-w-full col-span-4 p-2">
                     <p className="font-semibold ">Name: {data.name} || Original name : {data.original_name}</p>
-                    <p> Genres:
+                    <p className="font-semibold "> Genres:
                         {
                             genres.map((data: any) => {
                                 return (
@@ -59,11 +59,17 @@ const Detail = () => {
                             })
                         }
                     </p>
+                    <p className="font-semibold ">Original country: {data.origin_country}</p>
+                    <p className="font-semibold ">Original language: {data.original_language}</p>
                 </div>
             </div>
             <br />
             <hr />
-
+            <div>
+                <h2 className="font-bold text-xl">Over view:</h2>
+                <br />
+                <p>{data.overview}</p>
+            </div>
         </div>
     )
 }
