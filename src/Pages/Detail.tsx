@@ -21,7 +21,7 @@ const Detail = () => {
             const response = await axios.get(`/${params.detail}/${params.id}`)
             setData(response.data)
             setGenres(response.data.genres)
-            // console.log("response", response.data)
+            console.log("response", response.data)
         } catch (error) {
             console.log("error", error)
         }
