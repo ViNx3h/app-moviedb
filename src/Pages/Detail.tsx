@@ -21,7 +21,7 @@ const Detail = () => {
             const response = await axios.get(`/${params.detail}/${params.id}`)
             setData(response.data)
             setGenres(response.data.genres)
-            console.log("response", response.data)
+            // console.log("response", response.data)
         } catch (error) {
             console.log("error", error)
         }
@@ -38,7 +38,10 @@ const Detail = () => {
 
     const handleAddList = async () => {
         try {
-            await client.models.List?.create({ id: params.id, name: data.original_title || data.original_name })
+            await client.models.List?.create({
+                id: params.id, name: data.original_title
+                    || data.original_name, media_type: params.detail
+            })
 
         } catch (error) {
             console.log("error", error)
