@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../Components/Card";
-import { Schema } from 'e:/Intern/app-moviedb/app-moviedb/amplify/data/resource';
+import type { Schema } from 'e:/Intern/app-moviedb/app-moviedb/amplify/data/resource';
 
 const client = generateClient<Schema>();
 
