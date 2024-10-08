@@ -11,6 +11,7 @@ const schema = a.schema({
     .model({
       id: a.string(),
       name: a.string(),
+      media_type: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });

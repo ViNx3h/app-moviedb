@@ -48,6 +48,9 @@ const Detail = () => {
 
     console.log("list schema", client.models);
 
+    function handleDelete(id: string) {
+        client.models.List.delete({ id: id })
+    }
 
     useEffect(() => {
         client.models.List?.observeQuery()?.subscribe({
@@ -96,9 +99,16 @@ const Detail = () => {
                 <br />
                 <p>{data.overview}</p>
             </div>
-            <div className="">
-                <button onClick={handleAddList} className="bg-white text-neutral-800 rounded p-2 hover:bg-gradient-to-l from-red-500 to-orange-500 shadow-md transition-all hover:scale-105">
+            <div className="flex gap-4 mt-2">
+                <button onClick={handleAddList}
+                    className="bg-white text-neutral-800 rounded p-2 hover:bg-gradient-to-l from-red-500
+                 to-orange-500 shadow-md transition-all hover:scale-105">
                     Add to favorite
+                </button>
+                <button className="bg-white text-neutral-800 rounded p-2 
+                hover:bg-gradient-to-l from-red-500 to-orange-500 shadow-md transition-all hover:scale-105"
+                    onClick={() => handleDelete(params.id)}>
+                    Delete
                 </button>
             </div>
         </div>
