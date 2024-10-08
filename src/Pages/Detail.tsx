@@ -47,7 +47,7 @@ const Detail = () => {
 
                 </div>
                 <div className="border-solid border min-w-full col-span-4 p-2">
-                    <p className="font-semibold ">First air date: {data.first_air_date}</p>
+                    <p className="font-semibold ">Name: {data.name} || Original name : {data.original_name}</p>
                     <p> Genres:
                         {
                             genres.map((data: any) => {
