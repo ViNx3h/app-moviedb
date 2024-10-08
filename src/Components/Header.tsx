@@ -46,6 +46,7 @@ const Header = () => {
                         <a href='/movie'>
                             <label htmlFor="Movies" className='hover:text-neutral-100'>Movies</label>
                         </a>
+                        <Link to={"/list"} className='hover:text-neutral-100 pl-2'> List</Link>
                     </nav>
                 </div>
                 <div className='hidden: lg:flex items-center ml-auto '>

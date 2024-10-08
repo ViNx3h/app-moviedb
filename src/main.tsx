@@ -13,7 +13,7 @@ import MobileNavigation from "./Components/MobileNavigation.tsx";
 import "./index.css";
 import Detail from "./Pages/Detail.tsx";
 import Explore from "./Pages/Explore.tsx";
-import Home from "./Pages/Home.tsx";
+import List from "./Pages/List.tsx";
 import SearchPage from "./Pages/SearchPage.tsx";
 import { store } from "./store/store.tsx";
 
@@ -38,7 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Routes>
 
                 <Route path="/" element={<App />}></Route>
-                <Route path="/" element={<Home />}></Route>
+                <Route path="/list" element={<List />}></Route>
                 <Route path=":detail" element={<Explore />}></Route>
                 <Route path=":detail/:id" element={<Detail />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>

@@ -1,14 +1,16 @@
+import { generateClient } from "aws-amplify/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Schema } from '../../amplify/data/resource';
 import Card from "../Components/Card";
 
-// const client = generateClient<Schema>();
+const client = generateClient<Schema>();
 
 const Detail = () => {
     const [data, setData] = useState<any>({});
     const [genres, setGenres] = useState([]);
-    // const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
+    const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
     // const [credits, setCredits] = useState([]);
     const params = useParams();
 
@@ -34,24 +36,24 @@ const Detail = () => {
         }
     }
 
-    // const handleAddList = async () => {
-    //     try {
-    //         await client.models.List?.create({ id: params.id, name: data.original_title || data.original_name })
+    const handleAddList = async () => {
+        try {
+            await client.models.List?.create({ id: params.id, name: data.original_title || data.original_name })
 
-    //     } catch (error) {
-    //         console.log("error", error)
-    //     }
+        } catch (error) {
+            console.log("error", error)
+        }
 
-    // }
+    }
 
-    // console.log("list schema", client.models);
+    console.log("list schema", client.models);
 
 
-    // useEffect(() => {
-    //     client.models.List?.observeQuery()?.subscribe({
-    //         next: (data) => setList([...data.items])
-    //     })
-    // })
+    useEffect(() => {
+        client.models.List?.observeQuery()?.subscribe({
+            next: (data) => setList([...data.items])
+        })
+    })
 
     useEffect(() => {
         fetchData();
@@ -60,7 +62,7 @@ const Detail = () => {
 
     // console.log("isAdding", handleAddList);
 
-    // console.log("list", list);
+    console.log("list", list);
 
     return (
         <div className="py-16 ml-14">
@@ -95,7 +97,7 @@ const Detail = () => {
                 <p>{data.overview}</p>
             </div>
             <div className="">
-                <button className="bg-white text-neutral-800 rounded p-2 hover:bg-gradient-to-l from-red-500 to-orange-500 shadow-md transition-all hover:scale-105">
+                <button onClick={handleAddList} className="bg-white text-neutral-800 rounded p-2 hover:bg-gradient-to-l from-red-500 to-orange-500 shadow-md transition-all hover:scale-105">
                     Add to favorite
                 </button>
             </div>

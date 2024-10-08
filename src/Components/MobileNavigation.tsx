@@ -8,7 +8,7 @@ const MobileNavigation = () => {
             <div className="items-center flex justify-between h-full ">
                 <a href="/tv" className="px-3 flex h-full items-center flex-col justify-center hover:text-neutral-100"><PiTelevisionFill className="text-2xl" />TV Shows</a>
                 <a href="/movie" className="px-3 flex h-full items-center flex-col justify-center hover:text-neutral-100"><BiSolidMoviePlay className="text-2xl" />Movies</a>
-                <a href="/Home" className="px-3 flex h-full items-center flex-col justify-center hover:text-neutral-100"><MdHomeFilled className="text-2xl" />Home</a>
+                <a href="/" className="px-3 flex h-full items-center flex-col justify-center hover:text-neutral-100"><MdHomeFilled className="text-2xl" />Home</a>
             </div>
         </section>
     )
