@@ -6,7 +6,7 @@ import Card from './Card';
 
 const HorizontalScroll = ({ data, heading, trending, media_type }: { data: any; heading: string; trending: boolean; media_type: string }) => {
 
-    const containerRef = useRef();
+    const containerRef = useRef<any>();
     const handleNext = async () => {
         containerRef.current.scrollLeft += 300
     }

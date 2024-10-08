@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import Card from "../Components/Card";
 
 
+
 const Detail = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any>({});
     const [genres, setGenres] = useState([]);
     // const [credits, setCredits] = useState([]);
     const params = useParams();

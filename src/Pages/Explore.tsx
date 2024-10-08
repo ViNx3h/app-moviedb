@@ -9,7 +9,7 @@ const Explore = () => {
 
 
     const [pageNo, setPageNo] = useState(1);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any[]>([]);
     const [totalPageNo, setTotalPageNo] = useState(0);
 
 
