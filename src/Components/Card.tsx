@@ -47,7 +47,7 @@ const Card = ({ data, index, media_type }: any) => {
     const imageURL = useSelector((state: MovieDBState) => state.movieDBData.imageURL)
 
     const mediaType = data.media_type ?? media_type
-    console.log("data", data)
+    // console.log("data", data)
     return (
         <Link to={'/' + mediaType + '/' + data.id} className="w-full min-w-[220px] max-w-[220px] h-80 overflow-hidden rounded relative hover:scale-105 transition-all">
 
