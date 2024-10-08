@@ -38,7 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Routes>
 
                 <Route path="/" element={<App />}></Route>
-                <Route path="/home" element={<Home />}></Route>
+                <Route path="/" element={<Home />}></Route>
                 <Route path=":detail" element={<Explore />}></Route>
                 <Route path=":detail/:id" element={<Detail />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>
