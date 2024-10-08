@@ -46,9 +46,9 @@ const Detail = () => {
                     <Card data={data} media_type={params.detail} />
 
                 </div>
-                <div className="border-solid border min-w-full col-span-4 p-2">
-                    <p className="font-semibold ">Name: {data.name} || Original name : {data.original_name}</p>
-                    <p className="font-semibold "> Genres:
+                <div className="border-solid border min-w-full col-span-4 p-2 flex pt-5 justify-evenly grid grid-cols-1">
+                    <p className="font-semibold">Name: {data.name} || Original name : {data.original_name}</p>
+                    <p className="font-semibold"> Genres:
                         {
                             genres.map((data: any) => {
                                 return (
@@ -61,6 +61,7 @@ const Detail = () => {
                     </p>
                     <p className="font-semibold ">Original country: {data.origin_country}</p>
                     <p className="font-semibold ">Original language: {data.original_language}</p>
+                    <p className="font-semibold ">Popularity : {data.popularity}</p>
                 </div>
             </div>
             <br />
