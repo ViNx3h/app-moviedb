@@ -12,7 +12,7 @@ const Detail = () => {
     const [genres, setGenres] = useState([]);
     const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
     // const [credits, setCredits] = useState([]);
-    const params = useParams();
+    const params = useParams<any>();
 
     console.log("params", params);
 
@@ -48,7 +48,7 @@ const Detail = () => {
 
     console.log("list schema", client.models);
 
-    function handleDelete(id: string) {
+    function handleDelete(id: any) {
         client.models.List.delete({ id: id })
     }
 
