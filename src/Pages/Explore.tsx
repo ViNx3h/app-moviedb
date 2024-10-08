@@ -15,7 +15,7 @@ const Explore = () => {
 
     const params = useParams();
 
-    // console.log("params", params.detail)
+    // console.log("params", params)
 
     const fetchData = async () => {
         try {
