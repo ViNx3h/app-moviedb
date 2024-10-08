@@ -59,9 +59,9 @@ const Detail = () => {
                             })
                         }
                     </p>
-                    <p className="font-semibold ">Original country: {data.origin_country}</p>
-                    <p className="font-semibold ">Original language: {data.original_language}</p>
-                    <p className="font-semibold ">Popularity : {data.popularity}</p>
+                    <p className="font-semibold">Original country: {data.origin_country}</p>
+                    <p className="font-semibold">Original language: {data.original_language}</p>
+                    <p className="font-semibold">Popularity : {data.popularity}</p>
                 </div>
             </div>
             <br />

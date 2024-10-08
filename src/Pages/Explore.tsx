@@ -36,7 +36,7 @@ const Explore = () => {
             console.log("error", error);
         }
     }
-    console.log(totalPageNo)
+    // console.log(totalPageNo)
     const handleScroll = () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             setPageNo(preve => preve + 1)
