@@ -49,7 +49,7 @@ const BannerHome = () => {
 
 
 
-    // console.log("banner home", BannerData)
+    console.log("banner home", BannerData)
 
     return (
         <section className='w-full h-full'>
