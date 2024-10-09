@@ -51,9 +51,9 @@ const List = () => {
 
     return (
         <div>
-            <div className="container mx-auto py-16">
+            <div className="container mx-auto py-16 pl-6">
                 <h3 className="capitalize text-lg lg:text-xl font-semibold my-3 text-center">List</h3>
-                <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-4 justify-center lg:justify-start">
+                <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-5 justify-center lg:justify-start">
                     {
                         data.map((detail: any, index: any) => {
                             return (
