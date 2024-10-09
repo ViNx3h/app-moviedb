@@ -23,7 +23,7 @@ const BannerHome = () => {
     const handleNext = async () => {
         if (currentImage < BannerData.length - 1) {
             setCurrentImage(preve => preve + 1);
-        } else if (currentImage == BannerData.length - 1) {
+        } else {
             setCurrentImage(0);
         }
     }
@@ -49,7 +49,7 @@ const BannerHome = () => {
 
 
 
-    console.log("banner home", BannerData)
+    // console.log("banner home", BannerData)
 
     return (
         <section className='w-full h-full'>
