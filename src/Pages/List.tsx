@@ -31,7 +31,7 @@ const List = () => {
                 })
             );
             setData(fetchedData);
-            console.log("Fetched data:", fetchedData);
+            // console.log("Fetched data:", fetchedData);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -39,8 +39,8 @@ const List = () => {
 
 
 
-    console.log("data", data);
-    console.log("media type", mediaType);
+    // console.log("data", data);
+    // console.log("media type", mediaType);
 
 
     useEffect(() => {
