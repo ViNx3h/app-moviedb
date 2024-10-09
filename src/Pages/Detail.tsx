@@ -68,7 +68,7 @@ const Detail = () => {
 
     // console.log("isAdding", handleAddList);
 
-    // console.log("list", list);
+    console.log("list", list);
 
     return (
         <div className="py-16 ml-14">
