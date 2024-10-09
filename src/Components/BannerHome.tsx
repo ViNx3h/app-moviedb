@@ -21,19 +21,19 @@ const BannerHome = () => {
 
 
     const handleNext = async () => {
-        // if (currentImage < BannerData.length - 1) {
-        //     setCurrentImage(preve => preve + 1);
-        // } else {
-        //     setCurrentImage(0);
-        // }
-        for (let i = currentImage; i < BannerData.length - 1; i++) {
-            if (currentImage < BannerData.length - 1) {
-                setCurrentImage(currentImage + 1);
-            }
-            else {
-                setCurrentImage(0)
-            }
+        if (currentImage < BannerData.length - 1) {
+            setCurrentImage(preve => preve + 1);
+        } else {
+            setCurrentImage(0);
         }
+        // for (let i = currentImage; i < BannerData.length - 1; i++) {
+        //     if (currentImage < BannerData.length - 1) {
+        //         setCurrentImage(currentImage + 1);
+        //     }
+        //     else {
+        //         setCurrentImage(0)
+        //     }
+        // }
     }
 
     const handlePrevious = async () => {
