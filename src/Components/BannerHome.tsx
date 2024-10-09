@@ -38,11 +38,10 @@ const BannerHome = () => {
 
     useEffect(() => {
         const interval = setInterval(async () => {
-            if (currentImage == BannerData.length - 1) {
-                setCurrentImage(0);
-            }
             if (currentImage < BannerData.length - 1) {
                 handleNext();
+            } else {
+                setCurrentImage(0);
             }
         }, 5000)
         return () => clearInterval(interval)
