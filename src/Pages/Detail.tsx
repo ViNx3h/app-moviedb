@@ -66,7 +66,7 @@ const Detail = () => {
         fetchCreditData();
     }, [])
 
-    // console.log("isAdding", handleAddList);
+    console.log("isAdding", handleAddList);
 
     console.log("list", list);
 
