@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Schema } from "../../amplify/data/resource";
 import Card from "../Components/Card";
+import "../index.css";
 
 const client = generateClient<Schema>();
 const List = () => {
