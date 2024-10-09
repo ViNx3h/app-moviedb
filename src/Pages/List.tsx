@@ -22,6 +22,8 @@ const List = () => {
 
     const fetchData = async () => {
         try {
+            let e: any;
+            e.preventDefault();
             const fetchedData = await Promise.all(
                 list.map(async (item) => {
                     const response = await axios.get(`/${item.media_type}/${item.id}`);
