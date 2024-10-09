@@ -2,38 +2,46 @@ import { generateClient } from "aws-amplify/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Schema } from "../../amplify/data/resource";
+import Card from "../Components/Card";
 
 const client = generateClient<Schema>();
 const List = () => {
     const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
-    // const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<any[]>([]);
+    const [mediaType, setMediaType] = useState<any>([]);
+
     useEffect(() => {
         client.models.List?.observeQuery()?.subscribe({
             next: (data) => setList([...data.items])
         })
-    })
+    }, [])
+
+    // console.log("list", list);
 
 
     const fetchData = async () => {
         try {
-            {
-                list.map((data) => {
-                    const response = axios.get(`/${data.media_type}/${data.id}`);
-                    // setData(response.data)
-                    console.log("response", response);
-
+            const fetchedData = await Promise.all(
+                list.map(async (item) => {
+                    const response = await axios.get(`/${item.media_type}/${item.id}`);
+                    setMediaType((preve: any) => [...preve, item.media_type]);
+                    // console.log("response", response);
+                    return response.data;
                 })
-            }
-
+            );
+            setData(fetchedData);
+            // console.log("Fetched data:", fetchedData);
         } catch (error) {
-            console.log("error", error);
-
+            console.error("Error fetching data:", error);
         }
-    }
+    };
 
 
 
-    console.log("list", list);
+    // console.log("data", data);
+    console.log("media type", mediaType);
+
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -42,19 +50,20 @@ const List = () => {
 
     return (
         <div>
-            {/* <div className="container mx-auto ">
-                <h3 className="capitalize text-lg lg:text-xl font-semibold my-3">List:</h3>
+            <div className="container mx-auto py-16">
+                <h3 className="capitalize text-lg lg:text-xl font-semibold my-3 text-center">List</h3>
                 <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-4 justify-center lg:justify-start">
                     {
-                        list.map((detail: any, index) => {
+                        data.map((detail: any, index: any) => {
                             return (
-                                <Card data={detail} index={index + 1} media_type={detail.media_type} key={index} />
+                                <Card data={detail} index={index + 1} media_type={mediaType[index]}
+                                    key={index} />
                             )
 
                         })
                     }
                 </div>
-            </div> */}
+            </div>
 
         </div>
     )
