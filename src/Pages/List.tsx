@@ -39,7 +39,7 @@ const List = () => {
 
 
     // console.log("data", data);
-    console.log("media type", mediaType);
+    // console.log("media type", mediaType);
 
 
     useEffect(() => {

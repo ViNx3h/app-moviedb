@@ -14,7 +14,7 @@ const Detail = () => {
     // const [credits, setCredits] = useState([]);
     const params = useParams<any>();
 
-    console.log("params", params);
+    // console.log("params", params);
 
     const fetchData = async () => {
         try {
