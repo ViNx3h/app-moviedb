@@ -46,7 +46,10 @@ const List = () => {
 
 
     useEffect(() => {
+        let e: any;
+        e.preventDefault();
         fetchData();
+
     }, [])
 
 
