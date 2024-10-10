@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useParams, useSearchParams } from "react-router-dom";
 import Card from "../Components/Card";
+import '../index.css';
 
 const Explore = () => {
     const [data, setData] = useState<any[]>([]);
@@ -52,24 +53,27 @@ const Explore = () => {
                 </div>
 
                 <ReactPaginate
-                    className="flex text-white gap-5 justify-center mt-3"
+                    className="flex text-white gap-3 justify-center mt-5 pagination-container text-sm 
+                    "
                     pageCount={totalPageNo}
                     onPageChange={handlePageChange}
                     forcePage={pageNo - 1} // React Paginate is 0-indexed, so subtract 1
-                    containerClassName={"pagination-container"}
-                    activeClassName={"active-page active"}
                     breakLabel={"..."}
                     previousLabel={"<<"}
                     nextLabel={">>"}
                     pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
-                    previousClassName="page-item"
+                    previousClassName="page-item prev"
                     previousLinkClassName="page-link"
-                    nextClassName="page-item"
+                    nextClassName="page-item next"
                     nextLinkClassName="page-link"
-                    breakClassName="page-item"
+                    breakClassName="page-item break"
                     breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active "
+                    disabledClassName="disabled"
 
                 />
             </div>
