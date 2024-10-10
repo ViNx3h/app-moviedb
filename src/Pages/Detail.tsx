@@ -49,7 +49,7 @@ const Detail = () => {
 
     }
 
-    // console.log("list schema", client.models);
+    console.log("list schema", client.models);
 
     function handleDelete(id: any) {
         client.models.List.delete({ id: id })
