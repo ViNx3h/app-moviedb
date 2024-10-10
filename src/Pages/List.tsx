@@ -23,7 +23,7 @@ const List = () => {
         })
     }, [])
 
-    console.log("list", list);
+    // console.log("list", list);
     // console.log("data", data);
     // console.log("media type", mediaType);
 

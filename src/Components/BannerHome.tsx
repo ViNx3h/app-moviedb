@@ -49,8 +49,8 @@ const BannerHome = () => {
     }, [BannerData]);
 
 
-    console.log("current image", currentImage);
-    console.log("banner length", BannerData.length - 2);
+    // console.log("current image", currentImage);
+    // console.log("banner length", BannerData.length - 2);
 
 
 

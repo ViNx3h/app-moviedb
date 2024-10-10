@@ -35,7 +35,7 @@ const Detail = () => {
             const response = await axios.get(`/${params.detail}/${params.id}`)
             setData(response.data)
             setGenres(response.data.genres)
-            console.log("response", response.data)
+            // console.log("response", response.data)
         } catch (error) {
             console.log("error", error)
         }
@@ -64,8 +64,8 @@ const Detail = () => {
 
     }
 
-    console.log("list schema", client.models);
-    console.log("list", list);
+    // console.log("list schema", client.models);
+    // console.log("list", list);
 
 
     function handleDelete(id: any) {
