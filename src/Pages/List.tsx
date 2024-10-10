@@ -1,4 +1,3 @@
-import { fetchAuthSession } from 'aws-amplify/auth';
 import { generateClient } from "aws-amplify/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -12,10 +11,7 @@ const List = () => {
     const [data, setData] = useState<any[]>([]);
     const [mediaType, setMediaType] = useState<any>([]);
 
-    const handleGetToken = async () => {
-        const session = await fetchAuthSession();
-        console.log("access token", session.tokens?.accessToken.payload.username)
-    }
+
 
     useEffect(() => {
         client.models.List?.observeQuery()?.subscribe({
@@ -24,8 +20,8 @@ const List = () => {
     }, [])
 
     console.log("list", list);
-    console.log("data", data);
-    console.log("media type", mediaType);
+    // console.log("data", data);
+    // console.log("media type", mediaType);
 
 
     const fetchData = async () => {
@@ -47,7 +43,7 @@ const List = () => {
 
     useEffect(() => {
         fetchData();
-        handleGetToken();
+
     }, [])
 
 

@@ -25,11 +25,12 @@ Amplify.configure(outputs);
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+
   <React.StrictMode>
 
     <Authenticator>
       {({ signOut }) => (
-        <Provider store={store}>
+        <Provider store={store} >
           <div className=" pb-14 lg:pb-0">
             <BrowserRouter>
 

@@ -50,6 +50,8 @@ const Detail = () => {
     }
 
     console.log("list schema", client.models);
+    console.log("list", list);
+
 
     function handleDelete(id: any) {
         client.models.List.delete({ id: id })

@@ -5,14 +5,24 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../App.css';
 
 
+
 const Header = () => {
     const location = useLocation();
     const removeSpace = location?.search?.slice(3).split("%20").join(" ")
+    // const [data, setData] = useState<string | undefined>();
     // console.log("space", removeSpace)
     const [searchInput, setSearchInput] = useState(removeSpace);
     const nav = useNavigate();
 
+    // const handleGetToken = async () => {
+    //     const session = await fetchAuthSession();
+    //     const username = session.tokens?.accessToken.payload.username;
+    //     if (typeof username === 'string') {
+    //         setData(username); // Only set data if it's a valid string
+    //     }
+    //     console.log("access token", session.tokens?.accessToken.payload.username)
 
+    // }
     // const Navigation = {
     //     {
     //         <label htmlFor="TV shows"></label> 
@@ -30,6 +40,11 @@ const Header = () => {
 
     }
 
+    // useEffect(() => {
+    //     handleGetToken();
+
+    // }, [])
+
     return (
         <header className='fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75 z-20'>
             <div className='container mx-auto px-2 flex text-red-500 h-full items-center '>
@@ -46,7 +61,7 @@ const Header = () => {
                         <a href='/movie'>
                             <label htmlFor="Movies" className='hover:text-neutral-100'>Movies</label>
                         </a>
-                        <Link to={"/list"} className='hover:text-neutral-100 pl-2'> List</Link>
+                        <Link to={`/list`} className='hover:text-neutral-100 pl-2'> List</Link>
                     </nav>
                 </div>
                 <div className='hidden: lg:flex items-center ml-auto '>
