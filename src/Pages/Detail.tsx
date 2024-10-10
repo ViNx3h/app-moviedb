@@ -1,3 +1,4 @@
+import { fetchAuthSession } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -11,10 +12,21 @@ const Detail = () => {
     const [data, setData] = useState<any>({});
     const [genres, setGenres] = useState([]);
     const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
+    const [userId, setUserId] = useState<string | undefined>();
     // const [credits, setCredits] = useState([]);
     const params = useParams<any>();
 
     // console.log("params", params);
+
+    const handleGetToken = async () => {
+        const session = await fetchAuthSession();
+        const username = session.tokens?.accessToken.payload.username;
+        if (typeof username === 'string') {
+            setUserId(username); // Only set data if it's a valid string
+        }
+        console.log("access token", session.tokens?.accessToken.payload.username)
+
+    }
 
     const fetchData = async () => {
         try {
@@ -40,7 +52,8 @@ const Detail = () => {
         try {
             await client.models.List?.create({
                 id: params.id, name: data.original_title
-                    || data.original_name, media_type: params.detail
+                    || data.original_name, media_type: params.detail,
+                user_id: userId,
             })
 
         } catch (error) {
@@ -66,6 +79,11 @@ const Detail = () => {
     useEffect(() => {
         fetchData();
         fetchCreditData();
+    }, [])
+
+    useEffect(() => {
+        handleGetToken();
+
     }, [])
 
     // console.log("isAdding", handleAddList);
