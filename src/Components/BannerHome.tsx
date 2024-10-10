@@ -21,10 +21,15 @@ const BannerHome = () => {
 
 
     const handleNext = async () => {
-        if (currentImage < BannerData.length - 1) {
-            setCurrentImage(preve => preve + 1);
-        } else {
-            setCurrentImage(0);  // Reset to the first image if at the last one
+        // if (currentImage <= BannerData.length - 2) {
+        //     setCurrentImage(preve => preve + 1);
+        // } else {
+        //     setCurrentImage(0);  // Reset to the first image if at the last one
+        // }
+        if (currentImage == BannerData.length - 1) {
+            setCurrentImage(0);
+        } else if (currentImage <= BannerData.length - 2) {
+            setCurrentImage(preve => preve + 1)
         }
     };
 
@@ -45,6 +50,8 @@ const BannerHome = () => {
 
 
     console.log("current image", currentImage);
+    console.log("banner length", BannerData.length - 2);
+
 
 
 
