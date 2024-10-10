@@ -21,18 +21,12 @@ const BannerHome = () => {
 
 
     const handleNext = async () => {
-        if (currentImage <= (BannerData.length - 2)) {
+        if (currentImage < BannerData.length - 1) {
             setCurrentImage(preve => preve + 1);
+        } else {
+            setCurrentImage(0);  // Reset to the first image if at the last one
         }
-        // for (let i = currentImage; i < BannerData.length - 1; i++) {
-        //     if (currentImage < BannerData.length - 1) {
-        //         setCurrentImage(currentImage + 1);
-        //     }
-        //     else {
-        //         setCurrentImage(0)
-        //     }
-        // }
-    }
+    };
 
     const handlePrevious = async () => {
         if (currentImage > 0) {
@@ -44,18 +38,16 @@ const BannerHome = () => {
 
     useEffect(() => {
         const interval = setInterval(async () => {
-            if (currentImage <= (BannerData.length - 2)) {
-                handleNext();
-            } else {
-                setCurrentImage(0)
-            }
-
-        }, 3000)
-        return () => clearInterval(interval)
-    }, [BannerData, imageURL])
+            handleNext();  // Automatically call handleNext
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [BannerData]);
 
 
-    // console.log("banner home", BannerData)
+    console.log("current image", currentImage);
+
+
+
 
     return (
         <section className='w-full h-full'>
