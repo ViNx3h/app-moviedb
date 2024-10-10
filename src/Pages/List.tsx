@@ -18,6 +18,8 @@ const List = () => {
     }, [])
 
     console.log("list", list);
+    console.log("data", data);
+    console.log("media type", mediaType);
 
 
     const fetchData = async () => {
@@ -37,15 +39,15 @@ const List = () => {
         }
     };
 
-
-
-    console.log("data", data);
-    console.log("media type", mediaType);
-
-
     useEffect(() => {
         fetchData();
     }, [])
+
+
+
+
+
+
 
 
 
