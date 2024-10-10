@@ -1,3 +1,4 @@
+import { fetchAuthSession } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -10,12 +11,15 @@ const List = () => {
     const [list, setList] = useState<Array<Schema["List"]["type"]>>([]);
     const [data, setData] = useState<any[]>([]);
     const [mediaType, setMediaType] = useState<any>([]);
-
+    const [userId, setUserId] = useState<string | undefined>();
 
 
     useEffect(() => {
         client.models.List?.observeQuery()?.subscribe({
-            next: (data) => setList([...data.items])
+            next: (data) => {
+                const filteredItems = data.items.filter(item => item.user_id === userId);
+                setList([...filteredItems]); // Set filtered items
+            }
         })
     }, [])
 
@@ -23,6 +27,15 @@ const List = () => {
     // console.log("data", data);
     // console.log("media type", mediaType);
 
+    const handleGetToken = async () => {
+        const session = await fetchAuthSession();
+        const username = session.tokens?.accessToken.payload.username;
+        if (typeof username === 'string') {
+            setUserId(username); // Only set data if it's a valid string
+        }
+        console.log("access token", session.tokens?.accessToken.payload.username)
+
+    }
 
     const fetchData = async () => {
         try {
@@ -46,6 +59,10 @@ const List = () => {
 
     }, [])
 
+    useEffect(() => {
+        handleGetToken();
+
+    }, [])
 
     return (
         <div>
