@@ -27,6 +27,8 @@ const Detail = () => {
         console.log("access token", session.tokens?.accessToken.payload.username)
 
     }
+    console.log("token:", userId);
+
 
     const fetchData = async () => {
         try {

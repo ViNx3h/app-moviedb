@@ -43,7 +43,6 @@ const List = () => {
 
     useEffect(() => {
         fetchData();
-
     }, [])
 
 
