@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Card from "../Components/Card";
 
 const Explore = () => {
     const [data, setData] = useState<any[]>([]);
     const [totalPageNo, setTotalPageNo] = useState(0);
     const params = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
 
     // Get the current page from the URL query, default to 1 if not present
@@ -57,10 +57,20 @@ const Explore = () => {
                     onPageChange={handlePageChange}
                     forcePage={pageNo - 1} // React Paginate is 0-indexed, so subtract 1
                     containerClassName={"pagination-container"}
-                    activeClassName={"active-page"}
+                    activeClassName={"active-page active"}
                     breakLabel={"..."}
                     previousLabel={"<<"}
                     nextLabel={">>"}
+                    pageRangeDisplayed={3}
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+
                 />
             </div>
         </div>
