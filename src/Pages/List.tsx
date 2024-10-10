@@ -23,9 +23,7 @@ const List = () => {
         })
     }, [])
 
-    // console.log("list", list);
-    // console.log("data", data);
-    // console.log("media type", mediaType);
+
 
     const handleGetToken = async () => {
         const session = await fetchAuthSession();
@@ -49,7 +47,7 @@ const List = () => {
                 })
             );
             setData(fetchedData);
-            // console.log("Fetched data:", fetchedData);
+
         } catch (error) {
             console.error("Error fetching data:", error);
         }
