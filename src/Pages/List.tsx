@@ -44,13 +44,6 @@ const List = () => {
     }, [])
 
 
-
-
-
-
-
-
-
     return (
         <div>
             <div className="container mx-auto py-16 pl-6">
