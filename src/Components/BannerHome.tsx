@@ -46,7 +46,7 @@ const BannerHome = () => {
             handleNext();  // Automatically call handleNext
         }, 3000);
         return () => clearInterval(interval);
-    }, [BannerData]);
+    }, [BannerData, imageURL]);
 
 
     // console.log("current image", currentImage);
