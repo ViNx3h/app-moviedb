@@ -11,7 +11,7 @@ const Header = () => {
     const location = useLocation();
     const removeSpace = location?.search?.slice(3).split("%20").join(" ")
     const [data, setData] = useState<string | undefined>();
-    // console.log("space", removeSpace)
+   
     const [searchInput, setSearchInput] = useState(removeSpace);
     const nav = useNavigate();
 

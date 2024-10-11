@@ -16,23 +16,6 @@ const Card = ({ data, index, media_type }: any) => {
     const trending = false;
     const dispatch = useDispatch();
 
-
-    // const fetchTrendingData = async () => {
-    //     try {
-    //         const response = await axios.get('/trending/all/day');
-
-    //         dispatch(setBannerData(response.data.results))
-
-    //         // console.log("response", response.data.results)
-    //     } catch (error) {
-    //         console.log("error", error)
-    //     }
-    // }
-
-    // useEffect(()=> {
-    //     nav(`/${mediaType}/${data.id}`)
-    // })
-
     const fetchConfiguration = async () => {
         try {
             const response = await axios.get('/configuration')
