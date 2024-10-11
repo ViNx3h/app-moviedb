@@ -28,7 +28,7 @@ const Header = () => {
         if (searchInput) {
             nav(`/search?q=${searchInput}`);
         }
-    }, [searchInput, nav]);
+    }, [searchInput]);
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -37,7 +37,6 @@ const Header = () => {
 
     useEffect(() => {
         handleGetToken();
-
     }, [])
 
     return (
