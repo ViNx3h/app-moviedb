@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Card from "../Components/Card";
 
 const SearchPage = () => {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const location = useLocation();
+    const nav = useNavigate();
+
+
 
     const fetchData = async () => {
         const query = location?.search?.slice(3) || '';
@@ -44,6 +47,18 @@ const SearchPage = () => {
         window.addEventListener('scroll', handleScroll);
     }, [])
 
+    // console.log("searchData", da);
+
+    const handleNav = async (media_type: string, id: string) => {
+        try {
+            const isNav = nav(`/${media_type}/${id}`)
+            console.log("isNav", isNav)
+        } catch (error) {
+            console.log("error ", error);
+
+        }
+    }
+
     return (
         <div className="py-16">
             <div className="container mx-auto">
@@ -51,7 +66,9 @@ const SearchPage = () => {
                 <div className="grid grid-cols-[repeat(auto-fit,220px)] gap-4 justify-center">
                     {data.length > 0 ? (
                         data.map((searchData: any, index) => (
-                            <Card data={searchData} index={index + 1} media_type={searchData.media_type} key={index} />
+                            <>
+                                <Card onClick={() => handleNav(searchData.media_type, searchData.id)} data={searchData} index={index + 1} media_type={searchData.media_type} key={index} />
+                            </>
                         ))
                     ) : (
                         <p className="text-center">No results found</p>

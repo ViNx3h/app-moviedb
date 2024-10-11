@@ -16,6 +16,7 @@ const Card = ({ data, index, media_type }: any) => {
     const trending = false;
     const dispatch = useDispatch();
 
+
     // const fetchTrendingData = async () => {
     //     try {
     //         const response = await axios.get('/trending/all/day');
@@ -27,6 +28,10 @@ const Card = ({ data, index, media_type }: any) => {
     //         console.log("error", error)
     //     }
     // }
+
+    // useEffect(()=> {
+    //     nav(`/${mediaType}/${data.id}`)
+    // })
 
     const fetchConfiguration = async () => {
         try {
@@ -44,9 +49,12 @@ const Card = ({ data, index, media_type }: any) => {
         fetchConfiguration();
     }, [])
 
+    const mediaType = data.media_type ?? media_type
+
     const imageURL = useSelector((state: MovieDBState) => state.movieDBData.imageURL)
 
-    const mediaType = data.media_type ?? media_type
+
+
     // console.log("data", data)
     return (
         <Link to={'/' + mediaType + '/' + data.id} className="w-full min-w-[220px] max-w-[220px] h-80 overflow-hidden rounded relative hover:scale-105 transition-all">
