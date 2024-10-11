@@ -21,17 +21,11 @@ const BannerHome = () => {
 
 
     const handleNext = () => {
-        // if (currentImage <= BannerData.length - 2) {
-        //     setCurrentImage(preve => preve + 1);
-        // } else {
-        //     setCurrentImage(0);  // Reset to the first image if at the last one
-        // }
-        if (currentImage == BannerData.length - 1) {
-            setCurrentImage(0);
-        } else if (currentImage <= BannerData.length - 2) {
-            setCurrentImage(preve => preve + 1)
-        }
+        if (BannerData.length === 0) return; // If no data, don't do anything
+
+        setCurrentImage((prev) => (prev + 1) % BannerData.length); // Increment and wrap around
     };
+
 
     const handlePrevious = async () => {
         if (currentImage > 0) {
@@ -46,13 +40,11 @@ const BannerHome = () => {
             handleNext();  // Automatically call handleNext
         }, 3000);
         return () => clearInterval(interval);
-    }, [BannerData, imageURL]);
+    }, [BannerData]);
 
 
     // console.log("current image", currentImage);
     // console.log("banner length", BannerData.length - 2);
-
-
 
 
 
