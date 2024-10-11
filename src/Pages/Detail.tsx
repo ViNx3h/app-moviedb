@@ -81,7 +81,7 @@ const Detail = () => {
     useEffect(() => {
         fetchData();
         fetchCreditData();
-    }, [])
+    }, [list])
 
     useEffect(() => {
         handleGetToken();
