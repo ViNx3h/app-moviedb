@@ -27,7 +27,7 @@ const Detail = () => {
         console.log("access token", session.tokens?.accessToken.payload.username)
 
     }
-    console.log("token:", userId);
+
 
 
     const fetchData = async () => {
@@ -35,7 +35,6 @@ const Detail = () => {
             const response = await axios.get(`/${params.detail}/${params.id}`)
             setData(response.data)
             setGenres(response.data.genres)
-            // console.log("response", response.data)
         } catch (error) {
             console.log("error", error)
         }
@@ -73,10 +72,11 @@ const Detail = () => {
     }
 
     useEffect(() => {
-        client.models.List?.observeQuery()?.subscribe({
+        const sub = client.models.List?.observeQuery()?.subscribe({
             next: (data) => setList([...data.items])
-        })
-    })
+        });
+        return () => sub?.unsubscribe();
+    }, [])
 
     useEffect(() => {
         fetchData();
@@ -90,7 +90,7 @@ const Detail = () => {
 
     // console.log("isAdding", handleAddList);
 
-    console.log("list", list);
+    // console.log("list", list);
 
     return (
         <div className="py-16 ml-14">
