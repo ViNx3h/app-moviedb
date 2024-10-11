@@ -20,7 +20,7 @@ const BannerHome = () => {
 
 
 
-    const handleNext = async () => {
+    const handleNext = () => {
         // if (currentImage <= BannerData.length - 2) {
         //     setCurrentImage(preve => preve + 1);
         // } else {
