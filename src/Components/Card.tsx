@@ -68,8 +68,8 @@ const Card = ({ data, index, media_type }: any) => {
             </div>
             <div className="absolute bottom-0 h-14 backdrop-blur-3xl w-full bg-neutral-600/40 p-2">
                 <h2 className="text-ellipsis line-clamp-1 font-semibold">{data?.title || data?.name}</h2>
-                <div className="text-sm text-neutral-400 flex justify-between ">
-                    {data?.release_date || data?.first_air_date}
+                <div className="text-sm text-neutral-400 justify-between flex relative">
+                    <p className="relative">{data?.release_date || data?.first_air_date}</p>
                     <p className="bg-neutral-700 px-1 rounded-full text-white">Rating: {Number(data?.vote_average).toFixed(1)}</p>
                 </div>
             </div>

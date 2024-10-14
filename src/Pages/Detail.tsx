@@ -94,9 +94,9 @@ const Detail = () => {
 
     return (
         <div className=" py-16 ml-14 mx-auto">
-            <div className=" flex grid mx-auto grid-cols-5 gap-5 relative overflow-hidden  overflow-x-hidden">
+            <div className=" flex grid mx-auto grid-cols-5 gap-5 relative overflow-hidden overflow-x-hidden">
                 <div className="relative mx-auto">
-                    <Card data={data} media_type={params.detail} />
+                    <Card className="" data={data} media_type={params.detail} />
 
                 </div>
                 <div className="border-solid border min-w-full col-span-4 p-2 flex pt-5 justify-evenly grid grid-cols-1">
