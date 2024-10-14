@@ -93,15 +93,15 @@ const Detail = () => {
     // console.log("list", list);
 
     return (
-        <div className="py-16 ml-14">
-            <div className="container flex grid grid-cols-5 gap-5 ">
-                <div className="">
+        <div className=" py-16 ml-14 mx-auto">
+            <div className=" flex grid mx-auto grid-cols-5 gap-5 relative overflow-hidden  overflow-x-hidden">
+                <div className="relative mx-auto">
                     <Card data={data} media_type={params.detail} />
 
                 </div>
                 <div className="border-solid border min-w-full col-span-4 p-2 flex pt-5 justify-evenly grid grid-cols-1">
                     <p className="font-semibold">Name: {data.name} || Original name : {data.original_name} {data.original_title}</p>
-                    <p className="font-semibold"> Genres:
+                    <p key={userId} className="font-semibold"> Genres:
                         {
                             genres.map((data: any) => {
                                 return (
