@@ -44,7 +44,7 @@ const SearchPage = () => {
         window.addEventListener('scroll', handleScroll);
     }, [])
 
-    // console.log("searchData", da);
+    // console.log("searchData", data);
 
 
     return (
